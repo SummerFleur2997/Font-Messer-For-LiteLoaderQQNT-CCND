@@ -6,66 +6,57 @@ for i in range(19968, 40960):
     hex_num = str(hex(i))
     CJK.append(hex_num)
 
-JP_Hiragana = [
-    "uni3041", "uni3042", "uni3043", "uni3044", "uni3045", "uni3046", "uni3047", "uni3048", "uni3049",
-    "uni304A", "uni304B", "uni304C", "uni304D", "uni304E", "uni304F", "uni3050", "uni3051", "uni3052",
-    "uni3053", "uni3054", "uni3055", "uni3056", "uni3057", "uni3058", "uni3059", "uni305A", "uni305B",
-    "uni305C", "uni305D", "uni305E", "uni305F", "uni3060", "uni3061", "uni3062", "uni3063", "uni3064",
-    "uni3065", "uni3066", "uni3067", "uni3068", "uni3069", "uni306A", "uni306B", "uni306C", "uni306D",
-    "uni306E", "uni306F", "uni3070", "uni3071", "uni3072", "uni3073", "uni3074", "uni3075", "uni3076",
-    "uni3077", "uni3078", "uni3079", "uni307A", "uni307B", "uni307C", "uni307D", "uni307E", "uni307F",
-    "uni3080", "uni3081", "uni3082", "uni3083", "uni3084", "uni3085", "uni3086", "uni3087", "uni3088",
-    "uni3089", "uni308A", "uni308B", "uni308C", "uni308D", "uni308E", "uni308F", "uni3090", "uni3091",
-    "uni3092", "uni3093", "uni3094", "uni309D", "uni309E"]
+Latin_name = [
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
-JP_Katakana = [
-    "uni30AB", "uni30AD", "uni30AF", "uni30B1", "uni30B3", "uni30B5", "uni30B7", "uni30B9", "uni30BB",
-    "uni30BD", "uni30BF", "uni30C1", "uni30C6", "uni30C8", "uni30CA", "uni30CB", "uni30CC", "uni30CD",
-    "uni30CE", "uni30CF", "uni30D2", "uni30D5", "uni30D8", "uni30DB", "uni30DE", "uni30DF", "uni30E0",
-    "uni30E1", "uni30E2", "uni30E4", "uni30E6", "uni30E8", "uni30E9", "uni30EA", "uni30EB", "uni30EC",
-    "uni30ED", "uni30EF", "uni30F0", "uni30F1", "uni30F2", "uni30F3"]
-Latin = [
-    "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z",
-    "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+Latin_weight = [
+    0.0788, 0.0156, 0.0268, 0.0389, 0.1268, 0.0256, 0.0187, 0.0573, 0.0707,
+    0.0010, 0.0060, 0.0394, 0.0244, 0.0706, 0.0776, 0.0186, 0.0009, 0.0594,
+    0.0634, 0.0978, 0.0280, 0.0102, 0.0214, 0.0016, 0.0202, 0.0006]
+
+JP = ["0x3041", "0x3042", "0x3043", "0x3044", "0x3045", "0x3046", "0x3047", "0x3048", "0x3049",
+      "0x304a", "0x304b", "0x304c", "0x304d", "0x304e", "0x304f", "0x3050", "0x3051", "0x3052",
+      "0x3053", "0x3054", "0x3055", "0x3056", "0x3057", "0x3058", "0x3059", "0x305a", "0x305b",
+      "0x305c", "0x305d", "0x305e", "0x305f", "0x3060", "0x3061", "0x3062", "0x3063", "0x3064",
+      "0x3065", "0x3066", "0x3067", "0x3068", "0x3069", "0x306a", "0x306b", "0x306c", "0x306d",
+      "0x306e", "0x306f", "0x3070", "0x3071", "0x3072", "0x3073", "0x3074", "0x3075", "0x3076",
+      "0x3077", "0x3078", "0x3079", "0x307a", "0x307b", "0x307c", "0x307d", "0x307e", "0x307f",
+      "0x3080", "0x3081", "0x3082", "0x3083", "0x3084", "0x3085", "0x3086", "0x3087", "0x3088",
+      "0x3089", "0x308a", "0x308b", "0x308c", "0x308d", "0x308e", "0x308f", "0x3090", "0x3091",
+      "0x3092", "0x3093", "0x3094", "0x309d", "0x309e", "0x30a1", "0x30a2", "0x30a3", "0x30a4",
+      "0x30a5", "0x30a6", "0x30a7", "0x30a8", "0x30a9", "0x30aa", "0x30ab", "0x30ac", "0x30ad",
+      "0x30ae", "0x30af", "0x30b0", "0x30b1", "0x30b2", "0x30b3", "0x30b4", "0x30b5", "0x30b6",
+      "0x30b7", "0x30b8", "0x30b9", "0x30ba", "0x30bb", "0x30bc", "0x30bd", "0x30be", "0x30bf",
+      "0x30c0", "0x30c1", "0x30c2", "0x30c3", "0x30c4", "0x30c5", "0x30c6", "0x30c7", "0x30c8",
+      "0x30c9", "0x30ca", "0x30cb", "0x30cc", "0x30cd", "0x30ce", "0x30cf", "0x30d0", "0x30d1",
+      "0x30d2", "0x30d3", "0x30d4", "0x30d5", "0x30d6", "0x30d7", "0x30d8", "0x30d9", "0x30da",
+      "0x30db", "0x30dc", "0x30dd", "0x30de", "0x30df", "0x30e0", "0x30e1", "0x30e2", "0x30e3",
+      "0x30e4", "0x30e5", "0x30e6", "0x30e7", "0x30e8", "0x30e9", "0x30ea", "0x30eb", "0x30ec",
+      "0x30ed", "0x30ee", "0x30ef", "0x30f0", "0x30f1", "0x30f2", "0x30f3", "0x30f4", "0x30f5",
+      "0x30f6", "0x30f7", "0x30f8", "0x30f9", "0x30fa", "0x30fc", "0x30fd", "0x30fe"]
 
 
 def getXML():
-    o_font = TTFont(r".\output\jp.TTF")
-    o_font.saveXML(r".\output\jp.ttx", tables=["hhea"])
+    o_font = TTFont(r".\output\EN.TTF")
+    o_font.saveXML(r".\output\EN.ttx")
 
 
 def writeCJKInfo():
-    counter = 0
-    random.shuffle(JP_Hiragana)
     f = open("log_cjk.xml", 'w')
 
+    for o in JP:
+        selectedLetter = random.choices(Latin_name, weights=Latin_weight)
+        xml = f'<map code="{o}" name="{selectedLetter[0]}"/>'
+        f.write(xml + '\n')
+
     for o in CJK:
-        index = counter % 86
-        xml = f'<map code="{o}" name="{JP_Hiragana[index]}"/>'
+        selectedLetter = random.choices(Latin_name, weights=Latin_weight)
+        xml = f'<map code="{o}" name="{selectedLetter[0]}"/>'
         f.write(xml + '\n')
-
-        counter = counter + 1
-        if counter % 86 == 0:
-            random.shuffle(JP_Hiragana)
-
-    f.close()
-
-
-def writeLatinInfo():
-    index = 0
-    random.shuffle(JP_Katakana)
-    f = open("log_latin.xml", 'w')
-
-    for o in range(len(Latin)):
-        Latin[o] = str(hex(ord(Latin[o])))
-
-    for o in Latin:
-        xml = f'<map code="{o}" name="{JP_Katakana[index]}"/>'
-        f.write(xml + '\n')
-        index = index + 1
 
     f.close()
 
 
 if __name__ == "__main__":
-    getXML()
+    writeCJKInfo()
