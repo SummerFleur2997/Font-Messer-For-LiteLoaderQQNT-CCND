@@ -1,2 +1,4 @@
 temp/
-JP/
+**/output/
+**/*.xml
+ttfname3.exe
