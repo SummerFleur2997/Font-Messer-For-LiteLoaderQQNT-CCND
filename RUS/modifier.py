@@ -59,4 +59,4 @@ def writeLatinInfo():
 
 
 if __name__ == "__main__":
-    writeLatinInfo()
+    pass

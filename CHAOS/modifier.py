@@ -1,10 +1,9 @@
 import random
+from index import COPY
 from chao import *
-from index import *
 
 
 def shuffleCJK():
-
     for lst in ("jp_name", "gb2312_name", "gb2312_add_name"):
         nn = 0
         while True:
@@ -24,9 +23,7 @@ def shuffleCJK():
 def shuffleLatin():
     for lst in ("greek_name", "latin_name"):
         nn = 0
-        temp = []
-        for o in eval(lst):
-            temp.append(o)
+        temp = COPY(eval(lst))
         while True:
             random.shuffle(eval(lst))
             tag_stop = True
@@ -83,7 +80,4 @@ def writeLatinInfo():
 
 
 if __name__ == "__main__":
-    shuffleCJK()
-    writeCJKInfo()
-
-
+    pass

@@ -31,8 +31,8 @@ def writeCJKInfo():
     f = open("log_cjk.xml", 'w')
     f.write("<cmap>\n")
 
-    for p in (JP, CJK):
-        for o in p:
+    for lst in (JP, CJK):
+        for o in lst:
             selectedLetter = random.choices(Greek_Sml, weights=Greek_weight)[0]
             if random.choices((True, False), weights=(0.2, 0.8))[0]:
                 selectedLetter = selectedLetter.upper()
