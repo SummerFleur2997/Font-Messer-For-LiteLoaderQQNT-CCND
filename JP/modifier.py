@@ -1,41 +1,38 @@
-import random
 from index import *
+from functions import *
+
+Katakana_vowel = ["uni30A1", "uni30A2", "uni30A3", "uni30A4", "uni30A5",
+                  "uni30A6", "uni30A7", "uni30A8", "uni30A9", "uni30AA"]
 
 
-def writeCJKInfo():
+def geneXMLInfo():
+    xml_elements = []
+    DeepShufferList(Number, "Number")
+    DeepShufferList(JP_Katakana, "Katakana")
+
+    for o in range(10):
+        XMLAppend(xml_elements, hex(0x30 + o), Number[o])
+    for o in range(10):
+        oo = str(hex(ord(Latin_vowel[o])))
+        XMLAppend(xml_elements, oo, Katakana_vowel[o])
+    for o in range(42):
+        oo = str(hex(ord(Latin_conso[o])))
+        XMLAppend(xml_elements, oo, JP_Katakana[o])
+
+    for o in JP:
+        JP_name = f"uni{o[2:].upper()}"
+        XMLAppend(xml_elements, o, JP_name)
+
     counter = 0
-    random.shuffle(JP_Hiragana)
-    f = open("log_cjk.xml", 'w')
-
     for o in CJK:
         index = counter % 86
-        xml = f'<map code="{o}" name="{JP_Hiragana[index]}"/>'
-        f.write(xml + '\n')
-
+        XMLAppend(xml_elements, o, JP_Hiragana[index])
         counter = counter + 1
         if counter % 86 == 0:
             random.shuffle(JP_Hiragana)
 
-    f.close()
+    return xml_elements
 
 
-def writeLatinInfo():
-    index = 0
-    random.shuffle(JP_Katakana)
-    f = open("log_latin.xml", 'w')
-    f.write("<cmap>\n")
-
-    for o in range(len(Latin)):
-        Latin[o] = str(hex(ord(Latin[o])))
-
-    for o in Latin:
-        xml = f'<map code="{o}" name="{JP_Katakana[index]}"/>'
-        f.write(xml + '\n')
-        index = index + 1
-
-    f.write("</cmap>")
-    f.close()
-
-
-if __name__ == "__main__":
-    pass
+def StartJP():
+    START("JP", geneXMLInfo())

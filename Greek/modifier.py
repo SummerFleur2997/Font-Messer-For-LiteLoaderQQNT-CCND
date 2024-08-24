@@ -1,6 +1,6 @@
-import random
-from index import *
 import unicodedata
+from index import *
+from functions import *
 
 
 def RemoveAccents(input_str):
@@ -27,9 +27,23 @@ def GetWeight():
     print(weight, len(weight))
 
 
-def writeCJKInfo():
-    f = open("log_cjk.xml", 'w')
-    f.write("<cmap>\n")
+def geneXMLInfo():
+    xml_elements = []
+    DeepShufferList(Number, "Number")
+    DeepShufferList(Greek_Cap, "Greek Cap")
+
+    Greek_Cap_mirror = COPY(Greek_Cap)
+    Greek_Cap_mirror.insert(16, 'Ξ')
+    Greek_Cap_mirror.insert(25, 'Ψ')
+
+    for o in range(10):
+        XMLAppend(xml_elements, hex(0x30 + o), Number[o])
+    for o in range(26):
+        oo = Greek_Sml.index(Greek_Cap_mirror[o].lower())
+        XMLAppend(xml_elements, hex(0x41 + o), Greek_Cap_name[oo])
+    for o in range(26):
+        oo = Greek_Sml.index(Greek_Cap_mirror[o].lower())
+        XMLAppend(xml_elements, hex(0x61 + o), Greek_Sml_name[oo])
 
     for lst in (JP, CJK):
         for o in lst:
@@ -39,13 +53,10 @@ def writeCJKInfo():
                 selectedLetter = Greek_Cap_name[Greek_Cap.index(selectedLetter)]
             else:
                 selectedLetter = Greek_Sml_name[Greek_Sml.index(selectedLetter)]
-
-            xml = f'      <map code="{o}" name="{selectedLetter}"/>'
-            f.write(xml + '\n')
-
-    f.write("</cmap>")
-    f.close()
+            XMLAppend(xml_elements, o, selectedLetter)
+            
+    return xml_elements
 
 
-if __name__ == "__main__":
-    pass
+def StartGreek():
+    START("Greek", geneXMLInfo())

@@ -1,61 +1,35 @@
-import random
 from index import *
+from functions import *
 
 GBK = COMMON[0:7]
 
 
-def writeCJKInfo():
-    f = open("log_cjk.xml", 'w')
-    f.write("<cmap>\n")
+def geneXMLInfo():
+    xml_elements = []
+    DeepShufferList(Number, "Number")
+    DeepShufferList(Latin_Cap, "Latin Cap")
 
+    Latin_Sml_mirror = COPY(Latin_Cap)
+    for index in range(len(Latin_Sml_mirror)):
+        Latin_Sml_mirror[index] = Latin_Sml_mirror[index].lower()
+
+    for o in range(10):
+        XMLAppend(xml_elements, hex(0x30 + o), Number[o])
+    for o in range(26):
+        XMLAppend(xml_elements, hex(0x41 + o), Latin_Cap[o])
+    for o in range(26):
+        XMLAppend(xml_elements, hex(0x61 + o), Latin_Sml_mirror[o])
+        
     for lst in [JP, CJK]:
         counter = 0
         for o in lst:
             index = counter % 7
-            xml = f'<map code="{o}" name="{GBK[index]}"/>'
-            f.write(xml + '\n')
+            XMLAppend(xml_elements, o, GBK[index])
             counter = counter + 1
-
-    f.write("</cmap>")
-    f.close()
-
-
-def writeLatinInfo():
-    f = open("log_latin.xml", 'w')
-    f.write("<cmap>\n")
-
-    Latin_Cap_bak = []
-    Latin_Sml_bak = []
-    for o in range(26):
-        Latin_Cap_bak.append(Latin_Cap[o])
-        Latin_Sml_bak.append(Latin_Sml[o])
-
-    random.shuffle(Latin_Cap_bak)
-    random.shuffle(Latin_Sml_bak)
-
-    while True:
-        p = 0
-        for o in range(26):
-            if Latin_Cap_bak[o] == Latin_Cap[o] or Latin_Sml_bak[o] == Latin_Sml[o]:
-                p = p + 1
-
-        if p == 0:
-            break
-        else:
-            random.shuffle(Latin_Cap_bak)
-            random.shuffle(Latin_Sml_bak)
-
-    for o in range(65, 91):
-        xml = f'<map code="{str(hex(o))}" name="{Latin_Cap_bak[o - 65]}"/>'
-        f.write(xml + '\n')
-
-    for o in range(97, 123):
-        xml = f'<map code="{str(hex(o))}" name="{Latin_Sml_bak[o - 97]}"/>'
-        f.write(xml + '\n')
-
-    f.write("</cmap>")
-    f.close()
+            
+    return xml_elements
 
 
-if __name__ == "__main__":
-    pass
+def StartGBK():
+    START("GBK", geneXMLInfo())
+

@@ -1,10 +1,20 @@
-import random
 from index import *
+from functions import *
 
 
-def writeCJKInfo():
-    f = open("log_cjk.xml", 'w')
-    f.write("<cmap>\n")
+def geneXMLInfo():
+    xml_elements = []
+    DeepShufferList(Number, "Number")
+
+    for o in range(10):
+        XMLAppend(xml_elements, hex(0x30 + o), Number[o])
+
+    random.shuffle(Russia_Cap_name)
+    for o in range(26):
+        XMLAppend(xml_elements, hex(0x41 + o), Russia_Cap_name[o])
+    for o in range(26):
+        oo = Russia_Sml_name.index(f"uni0{str(hex(int(Russia_Cap_name[o][-3:], 16) + 32))[-3:].upper()}")
+        XMLAppend(xml_elements, hex(0x61 + o), Russia_Sml_name[oo])
 
     for lst in (JP, CJK):
         for o in lst:
@@ -14,49 +24,10 @@ def writeCJKInfo():
                 selectedLetter = Russia_Cap_name[Russia_Cap.index(selectedLetter)]
             else:
                 selectedLetter = Russia_Sml_name[Russia_Sml.index(selectedLetter)]
+            XMLAppend(xml_elements, o, selectedLetter)
 
-            xml = f'      <map code="{o}" name="{selectedLetter}"/>'
-            f.write(xml + '\n')
-
-    f.write("</cmap>")
-    f.close()
+    return xml_elements
 
 
-def writeLatinInfo():
-    f = open("log_Latin.xml", 'w')
-    f.write("<cmap>\n")
-
-    nn = 0
-    temp = COPY(Number)
-    while True:
-        random.shuffle(Number)
-        tag_stop = True
-        for o in range(len(Number)):
-            if temp[o] == Number[o]:
-                tag_stop = False
-                break
-
-        nn += 1
-        if tag_stop:
-            print(f"Finished shuffling \"Number\", tried {nn} time(s).")
-            break
-
-    for o in range(10):
-        xml = f'      <map code="{hex(0x30 + o)}" name="{Number[o]}"/>'
-        f.write(xml + '\n')
-
-    random.shuffle(Russia_Cap_name)
-    for o in range(26):
-        xml = f'      <map code="{hex(0x41 + o)}" name="{Russia_Cap_name[o]}"/>'
-        f.write(xml + '\n')
-    for o in range(26):
-        oo = Russia_Sml_name.index(f"uni0{str(hex(int(Russia_Cap_name[o][-3:], 16) + 32))[-3:].upper()}")
-        xml = f'      <map code="{hex(0x61 + o)}" name="{Russia_Sml_name[oo]}"/>'
-        f.write(xml + '\n')
-
-    f.write("</cmap>")
-    f.close()
-
-
-if __name__ == "__main__":
-    pass
+def StartRUS():
+    START("RUS", geneXMLInfo())
