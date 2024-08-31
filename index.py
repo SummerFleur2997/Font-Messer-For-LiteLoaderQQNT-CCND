@@ -1,4 +1,11 @@
 CJK = []
+JP_Hiragana = []
+JP_Katakana = []
+Latin_Cap = []
+Greek_Cap = []
+Russia_Cap_name = []
+Number = []
+
 for i in range(19968, 40960):
     hex_num = str(hex(i))
     CJK.append(hex_num)
@@ -24,33 +31,12 @@ JP = ["0x3041", "0x3042", "0x3043", "0x3044", "0x3045", "0x3046", "0x3047", "0x3
       "0x30ed", "0x30ee", "0x30ef", "0x30f0", "0x30f1", "0x30f2", "0x30f3", "0x30f4", "0x30f5",
       "0x30f6", "0x30f7", "0x30f8", "0x30f9", "0x30fa", "0x30fc", "0x30fd", "0x30fe"]
 
-JP_Hiragana = [
-    "uni3041", "uni3042", "uni3043", "uni3044", "uni3045", "uni3046", "uni3047", "uni3048", "uni3049",
-    "uni304A", "uni304B", "uni304C", "uni304D", "uni304E", "uni304F", "uni3050", "uni3051", "uni3052",
-    "uni3053", "uni3054", "uni3055", "uni3056", "uni3057", "uni3058", "uni3059", "uni305A", "uni305B",
-    "uni305C", "uni305D", "uni305E", "uni305F", "uni3060", "uni3061", "uni3062", "uni3063", "uni3064",
-    "uni3065", "uni3066", "uni3067", "uni3068", "uni3069", "uni306A", "uni306B", "uni306C", "uni306D",
-    "uni306E", "uni306F", "uni3070", "uni3071", "uni3072", "uni3073", "uni3074", "uni3075", "uni3076",
-    "uni3077", "uni3078", "uni3079", "uni307A", "uni307B", "uni307C", "uni307D", "uni307E", "uni307F",
-    "uni3080", "uni3081", "uni3082", "uni3083", "uni3084", "uni3085", "uni3086", "uni3087", "uni3088",
-    "uni3089", "uni308A", "uni308B", "uni308C", "uni308D", "uni308E", "uni308F", "uni3090", "uni3091",
-    "uni3092", "uni3093", "uni3094", "uni309D", "uni309E"]
-
-JP_Katakana = [
-    "uni30AB", "uni30AD", "uni30AF", "uni30B1", "uni30B3", "uni30B5", "uni30B7", "uni30B9", "uni30BB",
-    "uni30BD", "uni30BF", "uni30C1", "uni30C6", "uni30C8", "uni30CA", "uni30CB", "uni30CC", "uni30CD",
-    "uni30CE", "uni30CF", "uni30D2", "uni30D5", "uni30D8", "uni30DB", "uni30DE", "uni30DF", "uni30E0",
-    "uni30E1", "uni30E2", "uni30E4", "uni30E6", "uni30E8", "uni30E9", "uni30EA", "uni30EB", "uni30EC",
-    "uni30ED", "uni30EF", "uni30F0", "uni30F1", "uni30F2", "uni30F3"]
-
 Latin_vowel = ["a", "A", "i", "I", "u", "U", "e", "E", "o", "O"]
-
+Katakana_vowel = ["uni30A1", "uni30A2", "uni30A3", "uni30A4", "uni30A5",
+                  "uni30A6", "uni30A7", "uni30A8", "uni30A9", "uni30AA"]
 Latin_conso = [
     "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z",
     "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
-
-Latin_Cap = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
 Latin_Sml = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
              'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -67,10 +53,6 @@ Greek_Sml = [
 Greek_Sml_name = [
     "alpha", "beta", "gamma", "delta", "epsilon", "zeta", "eta", "theta", "iota", "kappa", "lambda", "uni03BC",
     "nu", "xi", "omicron", "pi", "rho", "sigma", "tau", "upsilon", "phi", "chi", "psi", "omega"]
-
-Greek_Cap = [
-    'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ',
-    'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω']
 
 Greek_Cap_name = [
     "Alpha", "Beta", "Gamma", "uni0394", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu",
@@ -95,23 +77,58 @@ Russia_Cap = ["0x410", "0x411", "0x412", "0x413", "0x414", "0x415", "0x416", "0x
               "0x420", "0x421", "0x422", "0x423", "0x424", "0x425", "0x426", "0x427",
               "0x428", "0x429", "0x42a", "0x42b", "0x42c", "0x42d", "0x42e", "0x42f"]
 
-Russia_Cap_name = ["uni0410", "uni0411", "uni0412", "uni0413", "uni0414", "uni0415", "uni0416", "uni0417",
-                   "uni0418", "uni0419", "uni041A", "uni041B", "uni041C", "uni041D", "uni041E", "uni041F",
-                   "uni0420", "uni0421", "uni0422", "uni0423", "uni0424", "uni0425", "uni0426", "uni0427",
-                   "uni0428", "uni0429", "uni042A", "uni042B", "uni042C", "uni042D", "uni042E", "uni042F"]
-
 Russia_weight = [0.0764, 0.0201, 0.0438, 0.0172, 0.0309, 0.0875, 0.0101, 0.0148,
                  0.0709, 0.0121, 0.0330, 0.0496, 0.0317, 0.0678, 0.1118, 0.0247,
                  0.0423, 0.0497, 0.0609, 0.0222, 0.0021, 0.0095, 0.0039, 0.0140,
                  0.0072, 0.0030, 0.0002, 0.0236, 0.0184, 0.0036, 0.0047, 0.0196]
 
-Number = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-
-
 COMMON = ["uni4E00", "uni4E01", "uni4E02", "uni4E03", "uni4E04", "uni4E05",
           "uni4E06", "uni4E07", "uni4E08", "uni4E09", "uni4E0A", "uni4E0B"]
 
-if __name__ == "__main__":
-    print(len(JP), len(JP_Hiragana), len(JP_Katakana))
 
-# ttx -o RUS.ttf RUS.ttx
+def INIT():
+    JP_Hiragana.clear()
+    JP_Hiragana.extend((
+        "uni3041", "uni3042", "uni3043", "uni3044", "uni3045", "uni3046", "uni3047", "uni3048", "uni3049",
+        "uni304A", "uni304B", "uni304C", "uni304D", "uni304E", "uni304F", "uni3050", "uni3051", "uni3052",
+        "uni3053", "uni3054", "uni3055", "uni3056", "uni3057", "uni3058", "uni3059", "uni305A", "uni305B",
+        "uni305C", "uni305D", "uni305E", "uni305F", "uni3060", "uni3061", "uni3062", "uni3063", "uni3064",
+        "uni3065", "uni3066", "uni3067", "uni3068", "uni3069", "uni306A", "uni306B", "uni306C", "uni306D",
+        "uni306E", "uni306F", "uni3070", "uni3071", "uni3072", "uni3073", "uni3074", "uni3075", "uni3076",
+        "uni3077", "uni3078", "uni3079", "uni307A", "uni307B", "uni307C", "uni307D", "uni307E", "uni307F",
+        "uni3080", "uni3081", "uni3082", "uni3083", "uni3084", "uni3085", "uni3086", "uni3087", "uni3088",
+        "uni3089", "uni308A", "uni308B", "uni308C", "uni308D", "uni308E", "uni308F", "uni3090", "uni3091",
+        "uni3092", "uni3093", "uni3094", "uni309D", "uni309E"))
+
+    JP_Katakana.clear()
+    JP_Katakana.extend((
+        "uni30AB", "uni30AD", "uni30AF", "uni30B1", "uni30B3", "uni30B5", "uni30B7", "uni30B9", "uni30BB",
+        "uni30BD", "uni30BF", "uni30C1", "uni30C6", "uni30C8", "uni30CA", "uni30CB", "uni30CC", "uni30CD",
+        "uni30CE", "uni30CF", "uni30D2", "uni30D5", "uni30D8", "uni30DB", "uni30DE", "uni30DF", "uni30E0",
+        "uni30E1", "uni30E2", "uni30E4", "uni30E6", "uni30E8", "uni30E9", "uni30EA", "uni30EB", "uni30EC",
+        "uni30ED", "uni30EF", "uni30F0", "uni30F1", "uni30F2", "uni30F3"))
+
+    Latin_Cap.clear()
+    Latin_Cap.extend((
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'))
+
+    Greek_Cap.clear()
+    Greek_Cap.extend((
+        'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ',
+        'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω'))
+
+    Russia_Cap_name.clear()
+    Russia_Cap_name.extend((
+        "uni0410", "uni0411", "uni0412", "uni0413", "uni0414", "uni0415", "uni0416", "uni0417",
+        "uni0418", "uni0419", "uni041A", "uni041B", "uni041C", "uni041D", "uni041E", "uni041F",
+        "uni0420", "uni0421", "uni0422", "uni0423", "uni0424", "uni0425", "uni0426", "uni0427",
+        "uni0428", "uni0429", "uni042A", "uni042B", "uni042C", "uni042D", "uni042E", "uni042F"))
+
+    Number.clear()
+    Number.extend(("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"))
+
+
+INIT()
+if __name__ == "__main__":
+    print(Number)

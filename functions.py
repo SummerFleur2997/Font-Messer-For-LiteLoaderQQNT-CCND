@@ -2,6 +2,8 @@ import os
 import random
 import subprocess
 import xml.etree.ElementTree as ET
+
+from index import *
 from fontTools.ttLib import TTFont
 from fontTools.ttLib.woff2 import compress
 
@@ -10,8 +12,8 @@ declaration = '<?xml version="1.0" encoding="UTF-8"?>'
 
 
 def getXML(name):
-    o_font = TTFont(fr".\output\{name}.TTF")
-    o_font.saveXML(fr".\output\{name}.ttx")
+    o_font = TTFont(fr".\libs\{name}.TTF")
+    o_font.saveXML(fr".\libs\{name}.ttx")
 
 
 def COPY(item):
@@ -40,7 +42,7 @@ def DeepShufferList(item, name):
 
 
 def XMLModifier(name: str, info: list[ET.Element]):
-    XML = ET.parse(f"./output/{name}.raw.ttx")
+    XML = ET.parse(f"./libs/{name}.raw.ttx")
     root = XML.getroot()
 
     cmap = root.find('cmap')
@@ -52,7 +54,7 @@ def XMLModifier(name: str, info: list[ET.Element]):
         sub.extend(info)
         sub.attrib = temp
 
-    XML.write(f"./output/{name}.ttx", xml_declaration=True, encoding='utf-8')
+    XML.write(f"./libs/{name}.ttx", xml_declaration=True, encoding='utf-8')
 
 
 def XMLAppend(self, index, name):
@@ -62,15 +64,16 @@ def XMLAppend(self, index, name):
 
 
 def START(namespace, info, keep_procedure=False):
+    INIT()
     getXML(f"{namespace}.raw")
     XMLModifier(namespace, info)
-    subprocess.run(f'ttx -o "output\\{namespace}.ttf" "output\\{namespace}.ttx"')
-    compress(f"output\\{namespace}.ttf", f"output\\{namespace}.woff2")
+    subprocess.run(f'ttx -o "libs\\{namespace}.ttf" "libs\\{namespace}.ttx"')
+    compress(f"libs\\{namespace}.ttf", f"output\\{namespace}.woff2")
 
     if not keep_procedure:
-        os.remove(f"output\\{namespace}.raw.ttx")
-        os.remove(f"output\\{namespace}.ttf")
-        os.remove(f"output\\{namespace}.ttx")
+        os.remove(f"libs\\{namespace}.raw.ttx")
+        os.remove(f"libs\\{namespace}.ttf")
+        os.remove(f"libs\\{namespace}.ttx")
 
 
 if __name__ == "__main__":

@@ -1,7 +1,8 @@
 /backups
 /PythonProject
 /.idea
+/output/*.woff2
 /*/output/*.woff2
-/*/__pycache__
 /__pycache__
+/others
 ttfname3.exe
