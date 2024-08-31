@@ -2,4 +2,6 @@
 /PythonProject
 /.idea
 /*/output/*.woff2
+/*/__pycache__
+/__pycache__
 ttfname3.exe
