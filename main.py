@@ -160,6 +160,7 @@ def geneXMLInfo_RUS():
 
 
 if __name__ == "__main__":
+    os.makedirs("output", exist_ok=True)
     START("EN", geneXMLInfo_EN())
     START("GBK", geneXMLInfo_GBK())
     START("Greek", geneXMLInfo_Greek())
